@@ -10,7 +10,7 @@ const EditData = () => {
 
   useEffect(() => {
     fetchData();
-  },[] ); // Empty dependency array to ensure the effect runs only once on component mount
+  }, []);
 
   const fetchData = async () => {
     try {
@@ -19,10 +19,8 @@ const EditData = () => {
       const args = ['65d880bdf332ae485b63b52e'];
       const result = await app.currentUser.callFunction(functionName, ...args);
       setPressureData(result);
-      // Set const and P0 values in local state when fetching data
       setConstValue(result.Input.const.toString());
       setP0Value(result.Input.P0.toString());
-
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -32,11 +30,9 @@ const EditData = () => {
     try {
       const app = new Realm.App({ id: process.env.REACT_APP_REALM_APP_ID });
       const functionName = 'changeValue';
-      const args = [constValue,P0Value,];
+      const args = [constValue, P0Value];
       await app.currentUser.callFunction(functionName, ...args);
-      // After changing values, fetch updated data
       fetchData();
-      // Exit edit mode after changing values
       setEditMode(false);
     } catch (error) {
       console.error('Error changing values:', error);
@@ -44,15 +40,15 @@ const EditData = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto p-8 max-w-md bg-white shadow-md rounded">
       {isEditMode ? (
         <>
-          <div className="mb-4">
+          <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="constInput">
-              const:
+              Const:
             </label>
             <input
-              className="w-full px-3 py-2 border rounded border-gray-300 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-indigo-500"
               type="number"
               id="constInput"
               value={constValue}
@@ -60,12 +56,12 @@ const EditData = () => {
             />
           </div>
 
-          <div className="mb-4">
+          <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="P0Input">
               P0:
             </label>
             <input
-              className="w-full px-3 py-2 border rounded border-gray-300 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-none focus:border-indigo-500"
               type="number"
               id="P0Input"
               value={P0Value}
@@ -74,7 +70,7 @@ const EditData = () => {
           </div>
 
           <button
-            className="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-indigo-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
             onClick={changeValue}
           >
             Save Changes
@@ -82,22 +78,21 @@ const EditData = () => {
         </>
       ) : (
         <>
-          <p>
-            <strong>const:</strong> {pressureData?.Input.const}
+          <p className="mb-4">
+            <strong>Const:</strong> {pressureData?.Input.const}
           </p>
-          <p>
+          <p className="mb-4">
             <strong>P0:</strong> {pressureData?.Input.P0}
           </p>
 
           <button
-            className="mt-4 bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-indigo-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
             onClick={() => setEditMode(true)}
           >
             Edit
           </button>
         </>
       )}
-
     </div>
   );
 };
