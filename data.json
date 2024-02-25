@@ -1,0 +1,74 @@
+{
+    "_id": {
+      "$oid": "65143e5597c5a25f63eb494b"
+    },
+    "public": {
+      "input": {
+        "jsonSchema": {
+          "personal": "note",
+          "private": "system",
+          "public": "input and output"
+        },
+        "jsonData": {
+          "date": 20231126,
+          "memberID": 20230001,
+          "memberName": "Le Van A",
+          "quantity": 3,
+          "totalClass": 2,
+          "class": [
+            "Machine Learning Class",
+            "4D Printing"
+          ]
+        },
+        "jsonInfo": {
+          "author": "Viet",
+          "ver": "2023-11-27T03:45:27Z"
+        },
+        "jsonPath": {
+          "db": "MIMO_KeToan_Registration",
+          "coll": "MIMO_COL_Registration"
+        }
+      },
+      "output": {
+        "jsonSchema": {},
+        "jsonData": {
+          "registrationFee": null
+        },
+        "jsonInfo": {
+          "author": "Viet",
+          "ver": "2023-11-27T03:45:27Z"
+        },
+        "jsonPath": {
+          "db": "MIMO_KeToan_Registration",
+          "coll": "MIMO_COL_Registration"
+        }
+      },
+      "info": {
+        "name": "MIMO_Registration_Module"
+      }
+    },
+    "private": {
+      "getData": "get data form cols",
+      "setData": "merge data",
+      "tempInput": "temp input",
+      "tempOutput": "temp output",
+      "processing": "$expert"
+    },
+    "personal": {
+      "summary": "Thông tin thêm",
+      "noted1": "JSON Schema KeToan ver 1.0"
+    }
+  }
+  {
+    "_id": {
+      "$oid": "65d880bdf332ae485b63b52e"
+    },
+    "Input": {
+      "Pc": 121665.5937,
+      "const": 0.010197162129779,
+      "P0": 101752.937465
+    },
+    "Output": {
+      "level": 50
+    }
+  }
