@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pressure/static/css/main.b7c01e95.css",
-    "main.js": "/pressure/static/js/main.f119e769.js",
+    "main.css": "/pressure/static/css/main.1af19d3f.css",
+    "main.js": "/pressure/static/js/main.14496c39.js",
     "index.html": "/pressure/index.html",
-    "main.b7c01e95.css.map": "/pressure/static/css/main.b7c01e95.css.map",
-    "main.f119e769.js.map": "/pressure/static/js/main.f119e769.js.map"
+    "main.1af19d3f.css.map": "/pressure/static/css/main.1af19d3f.css.map",
+    "main.14496c39.js.map": "/pressure/static/js/main.14496c39.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7c01e95.css",
-    "static/js/main.f119e769.js"
+    "static/css/main.1af19d3f.css",
+    "static/js/main.14496c39.js"
   ]
 }
