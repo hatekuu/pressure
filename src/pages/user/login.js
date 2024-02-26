@@ -15,7 +15,7 @@ const Login = () => {
       return; // Tránh nhấn nút nhiều lần trong khi đang xử lý
     }
     if (app.currentUser) {
-      navigate('/home');
+      navigate('/pressure/home');
     }
   
     setIsLoading(true);
@@ -23,7 +23,7 @@ const Login = () => {
     try {
       const credentials = Realm.Credentials.emailPassword(email, password);
       await app.logIn(credentials);
-      navigate('/home');
+      navigate('/pressure/home');
     } catch (error) {
       console.error('Login failed:', error);
       // Handle errors, you might want to display an error message to the user
@@ -68,10 +68,10 @@ const Login = () => {
           {isLoading ? 'Logging In...' : 'Login'}
         </button>
         <p className="mt-4">
-           Have not an account? <Link to="/register" className="text-indigo-500">Register</Link>
+           Have not an account? <Link to="/pressure/register" className="text-indigo-500">Register</Link>
         </p>
         <p className="mt-4">
-           Forgot your password? <Link to="/rspassword" className="text-indigo-500">Reset Password</Link>
+           Forgot your password? <Link to="/pressure/rspassword" className="text-indigo-500">Reset Password</Link>
         </p>
       </div>
     </div>

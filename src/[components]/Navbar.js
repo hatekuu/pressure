@@ -16,7 +16,7 @@ const Navbar = () => {
       try {
         await app.allUsers[userId].logOut();
         console.log("Logout successful")
-        navigate('/login');
+        navigate('/pressure/login');
       } catch (error) {
         console.log(error.error)
       }
@@ -27,7 +27,7 @@ const Navbar = () => {
     <nav className="bg-indigo-500 p-4">
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/home" className="text-white font-bold text-xl flex items-center">
+        <Link to="/pressure/home" className="text-white font-bold text-xl flex items-center">
           <img src={TDTU} alt="Logo" className="mr-2" width="70" height="70" />
           Home
         </Link>
@@ -36,10 +36,10 @@ const Navbar = () => {
             // Render Login and Register if userId is null
             <>
             
-              <Link to="/login" className="text-white mr-4">
+              <Link to="/pressure/login" className="text-white mr-4">
                 Login
               </Link>
-              <Link to="/register" className="text-white">
+              <Link to="/pressure/register" className="text-white">
                 Register
               </Link>
             </>

@@ -19,12 +19,12 @@ function App() {
       
         <Routes>
       
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/registertoken" element={<RegisterToken />} />
-          <Route path="/rspassword" element={<ResetPassword />} />
-          <Route path="/rspasswordtoken" element={<ResetPasswordToken />} />
+          <Route path="/pressure/home" element={<Home />} />
+          <Route path="/pressure/login" element={<Login />} />
+          <Route path="/pressure/register" element={<Register />} />
+          <Route path="/pressure/registertoken" element={<RegisterToken />} />
+          <Route path="/pressure/rspassword" element={<ResetPassword />} />
+          <Route path="/pressure/rspasswordtoken" element={<ResetPasswordToken />} />
         </Routes>
   
    
