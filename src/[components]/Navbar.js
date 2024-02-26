@@ -1,7 +1,7 @@
 // src/components/Navbar.js
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import TDTU from "./assets/TDTU.png"
+
 import * as Realm from 'realm-web';
 
 const Navbar = () => {
@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link to="/pressure/home" className="text-white font-bold text-xl flex items-center">
-          <img src={TDTU} alt="Logo" className="mr-2" width="70" height="70" />
+         
           Home
         </Link>
         <div className="float-right">

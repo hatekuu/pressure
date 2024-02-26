@@ -1,6 +1,5 @@
 // SvgRectangle.js
 import React from 'react';
-
 const SvgRectangle = ({ width, height, fillColor, strokeColor, rotate }) => {
   const numberOfDivisions = 10; // Tổng số nấc
   const divisionHeight = 250 / numberOfDivisions; // Chiều cao của mỗi nấc
