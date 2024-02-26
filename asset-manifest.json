@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/pressure/static/css/main.4380971b.css",
-    "main.js": "/pressure/static/js/main.4a0af43d.js",
-    "static/media/TDTU.png": "/pressure/static/media/TDTU.31783e95b10738f268cc.png",
+    "main.css": "/pressure/static/css/main.be2d4f77.css",
+    "main.js": "/pressure/static/js/main.c8e18232.js",
     "index.html": "/pressure/index.html",
-    "main.4380971b.css.map": "/pressure/static/css/main.4380971b.css.map",
-    "main.4a0af43d.js.map": "/pressure/static/js/main.4a0af43d.js.map"
+    "main.be2d4f77.css.map": "/pressure/static/css/main.be2d4f77.css.map",
+    "main.c8e18232.js.map": "/pressure/static/js/main.c8e18232.js.map"
   },
   "entrypoints": [
-    "static/css/main.4380971b.css",
-    "static/js/main.4a0af43d.js"
+    "static/css/main.be2d4f77.css",
+    "static/js/main.c8e18232.js"
   ]
 }
