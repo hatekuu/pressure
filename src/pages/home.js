@@ -6,8 +6,8 @@ import SvgRectangle from '../[components]/SvgRectangle';
 
 const Home = () => {
   const [pressureData, setPressureData] = useState(null);
-  const [levelValue, setlevelValue] = useState('');
-  const [PcValue, setPcValue] = useState('');
+
+
 
   useEffect(() => {
     fetchData();
@@ -20,8 +20,8 @@ const Home = () => {
       const args = ['65d880bdf332ae485b63b52e'];
       const result = await app.currentUser.callFunction(functionName, ...args);
       setPressureData(result);
-      setlevelValue(result.Output.level.toString());
-      setPcValue(result.Input.Pc.toString());
+     
+     
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -35,19 +35,20 @@ const Home = () => {
 
         {pressureData ? (
          <div className="border p-4 mb-4">
-            <p>
-              <strong>Input:</strong> Pc: {PcValue}
-            </p>
-            <p>
-              <strong>Output:</strong> Level: {levelValue} cm
-            </p>
+          {pressureData?.public?.output?.jsonSchema?.map((field) => (
+        <div key={field.name}>
+          <p>
+            {field.title}: {pressureData?.public?.output?.jsonData[field.name]}
+          </p>
+        </div>
+      ))}
 
             {/* Centered SvgRectangle within a parent div */}
         
               <div className="flex mr-24 overflow-visible h-80 mt-0 mb-96">
                 <SvgRectangle
                   width="30%"
-                  height={levelValue*25} // Height based on levelValue
+                  height={pressureData?.public?.output?.jsonData.level*25} // Height based on levelValue
                   fillColor="blue"
                   strokeColor="black"
                   rotate="-180"

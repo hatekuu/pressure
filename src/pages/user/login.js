@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Realm from 'realm-web';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const app = new Realm.App({ id: process.env.REACT_APP_REALM_APP_ID });
 
   const loginEmailPassword = async () => {
+    if (isLoading) {
+      return; // Tránh nhấn nút nhiều lần trong khi đang xử lý
+    }
+
+    setIsLoading(true);
+
     try {
       const credentials = Realm.Credentials.emailPassword(email, password);
-     await app.logIn(credentials);
-
-
-
-      // Navigate to /home after successful login
+      await app.logIn(credentials);
       navigate('/home');
     } catch (error) {
       console.error('Login failed:', error);
       // Handle errors, you might want to display an error message to the user
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -51,11 +56,20 @@ const Login = () => {
           />
         </div>
         <button
-          className="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className={`bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+            isLoading ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
           onClick={loginEmailPassword}
+          disabled={isLoading}
         >
-          Login
+          {isLoading ? 'Logging In...' : 'Login'}
         </button>
+        <p className="mt-4">
+           Have not an account? <Link to="/register" className="text-indigo-500">Register</Link>
+        </p>
+        <p className="mt-4">
+           Forgot your password? <Link to="/rspassword" className="text-indigo-500">Reset Password</Link>
+        </p>
       </div>
     </div>
   );

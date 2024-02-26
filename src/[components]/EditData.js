@@ -19,8 +19,9 @@ const EditData = () => {
       const args = ['65d880bdf332ae485b63b52e'];
       const result = await app.currentUser.callFunction(functionName, ...args);
       setPressureData(result);
-      setConstValue(result.Input.const.toString());
-      setP0Value(result.Input.P0.toString());
+      setConstValue(result?.public?.input?.jsonData?.const.toString());
+      setP0Value(result.public?.input?.jsonData?.P0.toString());
+   
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -78,12 +79,13 @@ const EditData = () => {
         </>
       ) : (
         <>
-          <p className="mb-4">
-            <strong>Const:</strong> {pressureData?.Input.const}
+            {pressureData?.public?.input?.jsonSchema?.map((field) => (
+        <div key={field.name}>
+          <p>
+            {field.title}: {pressureData?.public?.input?.jsonData[field.name]}
           </p>
-          <p className="mb-4">
-            <strong>P0:</strong> {pressureData?.Input.P0}
-          </p>
+        </div>
+      ))}
 
           <button
             className="bg-indigo-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"

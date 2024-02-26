@@ -1,5 +1,3 @@
-// src/components/RegisterToken.js
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Realm from 'realm-web';
@@ -7,6 +5,7 @@ import * as Realm from 'realm-web';
 const RegisterToken = () => {
   const [isButtonPressed, setButtonPressed] = useState(false);
   const [confirmationStatus, setConfirmationStatus] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +21,7 @@ const RegisterToken = () => {
       }
 
       try {
+        setIsLoading(true);
         await app.emailPasswordAuth.confirmUser({ token, tokenId });
         console.log('User confirmed successfully!');
         setConfirmationStatus('User confirmed successfully!');
@@ -30,6 +30,8 @@ const RegisterToken = () => {
       } catch (error) {
         console.error('User confirmation failed:', error);
         setConfirmationStatus('User confirmation failed');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -46,10 +48,13 @@ const RegisterToken = () => {
       <div className="bg-white p-8 rounded shadow-md w-96">
         <p className="mb-4">{confirmationStatus}</p>
         <button
-          className="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className={`bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+            isLoading ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
           onClick={handleButtonClick}
+          disabled={isLoading}
         >
-          Confirm User
+          {isLoading ? 'Confirming...' : 'Confirm User'}
         </button>
       </div>
     </div>

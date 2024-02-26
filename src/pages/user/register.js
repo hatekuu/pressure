@@ -6,14 +6,22 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [registrationStatus, setRegistrationStatus] = useState(null);
 
   const registerUser = async () => {
+    if (isLoading) {
+      return; // Tránh nhấn nút nhiều lần trong khi đang xử lý
+    }
+
+    setIsLoading(true);
+
     const app = new Realm.App({ id: process.env.REACT_APP_REALM_APP_ID });
 
     // Kiểm tra xem mật khẩu và mật khẩu xác nhận có khớp nhau không
     if (password !== confirmPassword) {
       setRegistrationStatus("Passwords do not match.");
+      setIsLoading(false);
       return;
     }
 
@@ -24,6 +32,8 @@ const Register = () => {
     } catch (error) {
       console.error("Registration failed:", error);
       setRegistrationStatus("Registration failed!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,10 +77,13 @@ const Register = () => {
         </div>
 
         <button
-          className="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className={`bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+            isLoading ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
           onClick={registerUser}
+          disabled={isLoading}
         >
-          Register
+          {isLoading ? 'Registering...' : 'Register'}
         </button>
 
         {registrationStatus && <p className="mt-4 text-red-500">{registrationStatus}</p>}
