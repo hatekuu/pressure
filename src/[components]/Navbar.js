@@ -46,9 +46,7 @@ const Navbar = () => {
           ) : (
             // Render LogOut if userId is not null
             <div>
-             <Link to="/form" className="text-white">
-                form
-              </Link>
+            
             <button onClick={handleButtonClick} className="text-white">
               LogOut
             </button></div>

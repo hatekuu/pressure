@@ -14,7 +14,10 @@ const Login = () => {
     if (isLoading) {
       return; // Tránh nhấn nút nhiều lần trong khi đang xử lý
     }
-
+    if (app.currentUser) {
+      navigate('/home');
+    }
+  
     setIsLoading(true);
 
     try {
