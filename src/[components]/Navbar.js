@@ -16,7 +16,7 @@ const Navbar = () => {
       try {
         await app.allUsers[userId].logOut();
         console.log("Logout successful")
-        navigate('/pressure/login');
+        navigate('/pressure');
       } catch (error) {
         console.log(error.error)
       }
@@ -36,17 +36,26 @@ const Navbar = () => {
             // Render Login and Register if userId is null
             <>
             
-              <Link to="/pressure/login" className="text-white mr-4">
+              <Link to="/pressure" className="text-white mr-4">
                 Login
               </Link>
               <Link to="/pressure/register" className="text-white">
                 Register
               </Link>
+              <Link to="/pressure/google" className="text-white mr-5">
+                  google
+              </Link>
             </>
           ) : (
             // Render LogOut if userId is not null
-            <div>
-            
+            <div >
+             <Link to="/pressure/form" className="text-white mr-5">
+                Form
+              </Link>
+              <Link to="/pressure/callfuntion" className="text-white mr-5">
+                function
+              </Link>
+             
             <button onClick={handleButtonClick} className="text-white">
               LogOut
             </button></div>

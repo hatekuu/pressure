@@ -26,7 +26,7 @@ const RegisterToken = () => {
         console.log('User confirmed successfully!');
         setConfirmationStatus('User confirmed successfully!');
         // Chuyển hướng về trang đăng nhập khi người dùng đã được xác nhận và nút đã được nhấn
-        navigate('/pressure/login');
+        navigate('/pressure');
       } catch (error) {
         console.error('User confirmation failed:', error);
         setConfirmationStatus('User confirmation failed');

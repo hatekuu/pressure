@@ -89,7 +89,7 @@ const Register = () => {
         {registrationStatus && <p className="mt-4 text-red-500">{registrationStatus}</p>}
 
         <p className="mt-4">
-          Already have an account? <Link to="/pressure/login" className="text-indigo-500">Login</Link>
+          Already have an account? <Link to="/pressure" className="text-indigo-500">Login</Link>
         </p>
       </div>
     </div>

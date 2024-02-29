@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import * as Realm from "realm-web";
 
 const ResetPassword = () => {
@@ -18,7 +19,7 @@ const ResetPassword = () => {
     try {
       await app.emailPasswordAuth.sendResetPasswordEmail({ email });
       setRegistrationStatus("Send ResetPassword successful!");
-      // window.location.href = "https://mail.google.com/";
+       window.location.href = "https://mail.google.com/";
     } catch (error) {
       console.error("Send ResetPassword failed:", error);
       setRegistrationStatus("Send ResetPassword failed!");
@@ -53,6 +54,9 @@ const ResetPassword = () => {
         </button>
 
         {registrationStatus && <p className="mt-4 text-red-500">{registrationStatus}</p>}
+        <p className="mt-4">
+           Return to logIn? <Link to="/pressure" className="text-indigo-500">Click here</Link>
+        </p>
       </div>
     </div>
   );

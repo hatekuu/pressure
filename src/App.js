@@ -1,33 +1,37 @@
 // src/App.js
-import React from 'react';
+import React,{lazy, Suspense} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/home';
-import Login from './pages/user/login';
-import Register from './pages/user/register';
-import RegisterToken from './token/registertoken';
-import Navbar from './[components]/Navbar';
-import ResetPassword from './pages/user/rspassword';
-import ResetPasswordToken from './token/rstoken';
-
+const CallFuntion  =lazy(()=> import ('./pages/test/callfuntion'))
+const Home =lazy(()=> import ('./pages/home'))
+const Login =lazy(()=> import ('./pages/user/login'))
+const Register =lazy(()=> import ( './pages/user/register'))
+const RegisterToken =lazy(()=> import ('./token/registertoken'))
+const  Navbar =lazy(()=> import ('./[components]/Navbar'))
+const ResetPassword =lazy(()=> import ('./pages/user/rspassword'))
+const ResetPasswordToken =lazy(()=> import ('./token/rstoken'))
+const  Form =lazy(()=> import ('./pages/test/form'))
+const  GoogleLogin =lazy(()=> import ('./pages/user/google'))
+const GoogleAuth =lazy(()=> import ( './token/googletoken'))
 function App() {
 
 
   return (
     <Router>
-      
+    <Suspense fallback={<div>Loading...</div>}>
       <Navbar />
-      
-        <Routes>
-      
-          <Route path="/pressure/home" element={<Home />} />
-          <Route path="/pressure/login" element={<Login />} />
-          <Route path="/pressure/register" element={<Register />} />
-          <Route path="/pressure/registertoken" element={<RegisterToken />} />
-          <Route path="/pressure/rspassword" element={<ResetPassword />} />
-          <Route path="/pressure/rspasswordtoken" element={<ResetPasswordToken />} />
-        </Routes>
-  
-   
+      <Routes>
+      <Route path="/pressure/googleauth" element={<GoogleAuth />} />
+      <Route path="/pressure/google" element={<GoogleLogin />} />
+      <Route path="/pressure/callfuntion" element={<CallFuntion />} />
+      <Route path="/pressure/form" element={<Form />} />
+        <Route path="/pressure/home" element={<Home />} />
+        <Route path="/pressure" element={<Login />} />
+        <Route path="/pressure/register" element={<Register />} />
+        <Route path="/pressure/registertoken" element={<RegisterToken />} />
+        <Route path="/pressure/rspassword" element={<ResetPassword />} />
+        <Route path="/pressure/rspasswordtoken" element={<ResetPasswordToken />} />
+      </Routes>
+    </Suspense>
   </Router>
 );
 }

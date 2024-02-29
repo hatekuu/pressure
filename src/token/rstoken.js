@@ -34,7 +34,7 @@ const ResetPasswordToken = () => {
         console.log('Resetpassword confirmed successfully!');
         setConfirmationStatus('Resetpassword confirmed successfully!');
         // Chuyển hướng về trang đăng nhập khi người dùng đã được xác nhận và nút đã được nhấn
-        navigate('/pressure/login');
+        navigate('/pressure');
       } catch (error) {
         console.error('Resetpassword confirmation failed:', error);
         setConfirmationStatus('Resetpassword confirmation failed');
