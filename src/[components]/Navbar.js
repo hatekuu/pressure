@@ -42,9 +42,7 @@ const Navbar = () => {
               <Link to="/pressure/register" className="text-white">
                 Register
               </Link>
-              <Link to="/pressure/google" className="text-white mr-5">
-                  google
-              </Link>
+           
             </>
           ) : (
             // Render LogOut if userId is not null
