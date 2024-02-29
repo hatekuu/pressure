@@ -20,7 +20,7 @@ function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Navbar />
       <Routes>
-      <Route path="/pressure/googleauth" element={<GoogleAuth />} />
+      <Route path="/api/auth/callback/google" element={<GoogleAuth />} />
  
       <Route path="/pressure/callfuntion" element={<CallFuntion />} />
       <Route path="/pressure/form" element={<Form />} />

@@ -12,7 +12,7 @@ const Login = () => {
   
   useEffect(() => {
     fetchData();
-  },[]);
+  },);
 
 
 const fetchData = async () => {
@@ -54,7 +54,7 @@ const fetchData = async () => {
 
       // The redirect URL should be on the same domain as this app and
       // specified in the auth provider configuration.
-      const redirectUrl = "https://hatekuu.github.io/pressure/googleauth";
+      const redirectUrl = "https://hatekuu.github.io/api/auth/callback/google";
       const credentials = Realm.Credentials.google({ redirectUrl });
 
       // Calling logIn() opens a Google authentication screen in a new window.
