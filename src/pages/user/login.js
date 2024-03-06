@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Realm from 'realm-web';
 
@@ -8,11 +8,13 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
- const app = new Realm.App({ id: process.env.REACT_APP_REALM_APP_ID });
+  const app = useMemo(() => new Realm.App({ id: process.env.REACT_APP_REALM_APP_ID }), []);
+
   
-  useEffect(() => {
-    fetchData();
-  },);
+ useEffect(() => {
+  fetchData();
+}, []); // Empty dependency array means it runs once on mount
+
 
 
 const fetchData = async () => {
@@ -48,18 +50,13 @@ const fetchData = async () => {
     }
   };
   const handleGoogleAuth = async () => {
-   
     try {
-
-
       // The redirect URL should be on the same domain as this app and
       // specified in the auth provider configuration.
-      const redirectUrl = "https://hatekuu.github.io/pressure/api/auth/callback/google";
+      const redirectUrl = "https://sites.google.com/view/hatekuu123/github?authuser=3/pressure/api/auth/callback/google";
       const credentials = Realm.Credentials.google({ redirectUrl });
-
       // Calling logIn() opens a Google authentication screen in a new window.
        await app.logIn(credentials);
-
       // The logIn() promise will not resolve until you call `handleAuthRedirect()`
       // from the new window after the user has successfully authenticated.
       navigate('/pressure/home');

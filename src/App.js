@@ -10,20 +10,21 @@ const  Navbar =lazy(()=> import ('./[components]/Navbar'))
 const ResetPassword =lazy(()=> import ('./pages/user/rspassword'))
 const ResetPasswordToken =lazy(()=> import ('./token/rstoken'))
 const  Form =lazy(()=> import ('./pages/test/form'))
-
 const GoogleAuth =lazy(()=> import ( './token/googletoken'))
 function App() {
 
 
   return (
+  
+      
     <Router>
     <Suspense fallback={<div>Loading...</div>}>
       <Navbar />
       <Routes>
+  
       <Route path="/pressure/api/auth/callback/google" element={<GoogleAuth />} />
- 
       <Route path="/pressure/callfuntion" element={<CallFuntion />} />
-      <Route path="/pressure/form" element={<Form />} />
+      <Route path="/dong/form" element={<Form />} />
         <Route path="/pressure/home" element={<Home />} />
         <Route path="/pressure" element={<Login />} />
         <Route path="/pressure/register" element={<Register />} />
