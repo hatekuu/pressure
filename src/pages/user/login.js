@@ -19,7 +19,8 @@ const Login = () => {
 
 const fetchData = async () => {
     try {
-      
+
+      console.log(window.location.href)
       if (app.currentUser) {
         navigate('/pressure/home');
       }
