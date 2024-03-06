@@ -22,7 +22,7 @@ function App() {
       <Navbar />
       <Routes>
   
-      <Route path="/pressure/api/auth/callback/google" element={<GoogleAuth />} />
+      <Route path="/view/cpkd/page?authuser=1" element={<GoogleAuth />} />
       <Route path="/pressure/callfuntion" element={<CallFuntion />} />
       <Route path="/dong/form" element={<Form />} />
         <Route path="/pressure/home" element={<Home />} />

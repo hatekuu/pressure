@@ -53,7 +53,7 @@ const fetchData = async () => {
     try {
       // The redirect URL should be on the same domain as this app and
       // specified in the auth provider configuration.
-      const redirectUrl = "https://sites.google.com/view/hatekuu123/github?authuser=3/pressure/api/auth/callback/google";
+      const redirectUrl = "https://sites.google.com/view/cpkd/page?authuser=1";
       const credentials = Realm.Credentials.google({ redirectUrl });
       // Calling logIn() opens a Google authentication screen in a new window.
        await app.logIn(credentials);
